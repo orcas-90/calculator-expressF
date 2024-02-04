@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="main">
+    <input class="valueOne">
+    <div class="box">
+     <button class="plus">+</button>
+     <button class="minus">-</span></button>
+     <button class="multiply">*</span></button>
+     <button class="divide">/</span></button>
+    </div>
+    <input class="valueTwo">
+
+    <div class="total">Total = </div>
+    </body>
+    <script src="/req.js"></script>
+    <script>
+    const valueOne = document.querySelector('.valueOne');
+    const valueTwo = document.querySelector('.valueTwo');
+    const total = document.querySelector('.total');
+    const plus = document.querySelector('.plus');
+    const minus = document.querySelector('.minus');
+    const multiply = document.querySelector('.multiply');
+    const divide = document.querySelector('.divide');
+
+    let results;
+    function request (params) {
+        fetch(`${params}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          count: +valueOne.value,
+          value: +valueTwo.value
+        }),
+      })
+        .then((response) => response.json())
+        .then((result) => { req(result)
+      })
+    }
+
+    fetch('http://localhost:3000/')
+      .then((response) => response.json())
+      .then((result) => {
+        valueOne.value = +result.count
+     });
+
+    plus.addEventListener('click', function () {
+
+
+      request('http://localhost:3000/calculator/plus1')
+
+    });
+
+    minus.addEventListener('click', function () {
+
+      request('http://localhost:3000/calculator/minus1')
+
+    });
+    multiply.addEventListener('click', function () {
+
+      request('http://localhost:3000/calculator/multiply1')
+
+    });
+    divide.addEventListener('click', function () {
+
+      request('http://localhost:3000/calculator/divide1')
+
+    });
+  </script>
+</html>

@@ -1,0 +1,16 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+
+}
+
+.valueOne {
+    margin-top: 50px;
+}
+
+.valueTwo {
+    margin-top: 20px;
+}
